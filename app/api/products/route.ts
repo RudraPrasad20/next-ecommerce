@@ -46,8 +46,8 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   // new item should show first that;s why we did .orderBy
-  // desc - decending
-  // go to db, select from products, in decending order
+  // desc - descending
+  // go to db, select from products, in descending order
 
   try {
     //  const allProducts = await db.select({id: products.id}).from(products).orderBy(products.id)  - to get only the product id
