@@ -8,6 +8,8 @@ npm update --save-dev
 npx drizzle-kit push
 npm run db:generate  
 
+ package.json: "db:run": "node -r esbuild-register ./migrate.ts",
+
 First, run the development server:
 
 ```bash
