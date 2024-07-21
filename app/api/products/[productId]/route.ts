@@ -3,10 +3,7 @@ import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  res: NextResponse,
-  { params }: { params: { productId: string } }
-) {
+export async function GET(res: NextResponse, { params }: { params: { productId: string } }) {
   try {
     const productId = params.productId;
     // checking if product.id is = productId of params or not - eq

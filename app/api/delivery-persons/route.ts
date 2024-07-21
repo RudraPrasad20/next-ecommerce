@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(res: NextResponse) {
+export async function GET() {
   try {
     // leftjoin - to link with warehouse
     const allDeliveryPersons = await db
