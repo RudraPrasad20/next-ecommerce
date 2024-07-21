@@ -1,4 +1,3 @@
-import { FormDescription } from "@/components/ui/form";
 import { products } from "@/db/schema";
 import { db } from "@/lib/db";
 import { productSchema } from "@/lib/validators/productSchema";
@@ -23,10 +22,10 @@ export async function POST(req: NextRequest) {
   }
 
   // to generate and store in public/assets folder .pmg or .jpeg etc..
-  const fileName = `${Date.now()}.${validData.image.name.split(".")}`;
+  const fileName = `${Date.now()}.${validData.image.name.split(".").pop()}`;
 
   try {
-    const buffer = Buffer.from(await validData.image.arrayBuffer());
+    const buffer = new Uint8Array(await validData.image.arrayBuffer());
     await writeFile(
       path.join(process.cwd(), "public/assets", fileName),
       buffer
@@ -45,12 +44,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  // new item should show first that;s why we did .orderBy
-  // desc - descending
-  // go to db, select from products, in descending order
-
   try {
-    //  const allProducts = await db.select({id: products.id}).from(products).orderBy(products.id)  - to get only the product id
     const allProducts = await db.select().from(products).orderBy(products.id);
     return NextResponse.json(allProducts);
   } catch (error) {
