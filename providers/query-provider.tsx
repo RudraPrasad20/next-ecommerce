@@ -1,5 +1,6 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RecoilRoot } from "recoil";
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
@@ -24,6 +25,10 @@ const queryClient = getQueryClient();
 
 export function QueryProvider({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+      {children}
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
