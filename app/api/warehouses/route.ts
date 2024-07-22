@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 }
 
-export async function GET(res: NextResponse) {
+export async function GET(req: NextRequest) {
     try {
         // get all warehouses
         const allWarehouses = await db.select().from(warehouses)

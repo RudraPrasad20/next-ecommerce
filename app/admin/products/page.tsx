@@ -9,7 +9,7 @@ import { getAllProducts } from "@/hooks/api";
 import { Product } from "@/types";
 
 import { Loader2 } from "lucide-react";
-import { DataTable } from "./_components/data-table";
+import { DataTable } from "../_components/data-table";
 import ProductSheet from "./_components/product-sheet";
 import { useNewProduct } from "@/hooks/products/product-atom";
 
