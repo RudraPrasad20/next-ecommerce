@@ -1,5 +1,7 @@
 "use client";
+import { authOptions } from "@/lib/auth/authOptions";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { getSession, SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 
 let browserQueryClient: QueryClient | undefined = undefined;
@@ -23,12 +25,14 @@ function getQueryClient() {
 }
 const queryClient = getQueryClient();
 
-export function QueryProvider({ children }: { children: React.ReactNode }) {
+export function QueryProvider({ children, session }: { children: React.ReactNode, session: any }) {
   return (
     <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
       <RecoilRoot>
       {children}
       </RecoilRoot>
+      </SessionProvider>
     </QueryClientProvider>
   );
 }
